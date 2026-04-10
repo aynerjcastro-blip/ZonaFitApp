@@ -1,9 +1,14 @@
 package gm.zona_fit;
 
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import ch.qos.logback.classic.Logger;
+
+import org.slf4j.LoggerFactory;
 
 import gm.zona_fit.service.IClienteServicio;
 
@@ -15,7 +20,11 @@ public class ZonaFitApplication {
 	@Autowired
 	private IClienteServicio clienteServicio;
 
-	
+	/*
+	* Usamos (Logger) porque nos permite mandar a imprimir informacion a consola.
+	* Usamos la clase Logger (LoggerFactory) porque nos ayuda a solicitar el objeto de tipo Logger, indicando el .class. 
+	 */
+	private static final Logger logger = (Logger) LoggerFactory.getLogger(ZonaFitApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(ZonaFitApplication.class, args);
