@@ -56,7 +56,7 @@ public class ZonaFitApplication  implements CommandLineRunner{
 				2. Buscar cliente.
 				3. Agregar cliente.
 				4. Modificar cliente.
-				5. Eliminar cliente.
+				5. Elimin|ar cliente.
 				T¿Elige una opcion:
 				\s""");
 				return Integer.parseInt(sc.nextLine());
@@ -66,14 +66,41 @@ public class ZonaFitApplication  implements CommandLineRunner{
 		var salir = false;
 		switch (opcion) {
 			case 1 -> {
-					logger.info(nl+"Listado de clientes: "+nl);
+					logger.info(nl+"--- Listado de clientes --- "+nl);
 					List<Cliente> clientes = clienteServicio.listarClientes();
 					clientes.forEach(cliente->logger.info(cliente.toString()));
 			}
 			case 2 -> {
-				
+					logger.info(nl+"--- Buscar Clientes ---"+nl);
+					logger.info("Ingrese el id del cliente a buscar: ");
+					var idCliente = Integer.parseInt(consola.nextLine());
+					Cliente cliente = clienteServicio.buscarClientePorId(idCliente);
+					if(cliente !=null){
+						logger.info("Cliente encontrado: "+cliente + nl);
+					}else{
+						logger.info("Cliente NO encontrado: "+cliente + nl);	
+					}
+			} 
+			case 3-> {
+					logger.info(nl+ "--- Agregar estudiante ---");
+					logger.info("Nombre: ");
+					var nombre = consola.nextLine();
+					
+					logger.info("Apellido: ");
+					var apellido = consola.nextLine();
+
+					logger.info("Membresia: ");
+					var membresia = Integer.parseInt(consola.nextLine());
+					
+					var cliente = new Cliente();
+					cliente.setNombre(nombre);
+					cliente.setApellido(apellido);
+					cliente.setMembresia(membresia);
+					clienteServicio.guardarCliente(cliente);
+					logger.info("Cliente agredado exitosamente: "+cliente+nl);
+					
 			}
 		}
-		return false;
+		return salir;
 	}
 }
