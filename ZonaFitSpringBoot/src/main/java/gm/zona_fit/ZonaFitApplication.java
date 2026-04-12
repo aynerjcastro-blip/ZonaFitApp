@@ -1,6 +1,5 @@
 package gm.zona_fit;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 import java.util.Scanner;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ch.qos.logback.classic.Logger;
 import gm.zona_fit.model.Cliente;
 import gm.zona_fit.service.IClienteServicio;
-import jakarta.persistence.criteria.CriteriaBuilder.In;
 
 @SpringBootApplication
 public class ZonaFitApplication implements CommandLineRunner {
